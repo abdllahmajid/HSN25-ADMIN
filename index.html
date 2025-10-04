@@ -4,633 +4,322 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pemesanan Kaos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f9fafb;
-            padding: 20px;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 768px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-            padding: 32px;
-            overflow-x: hidden;
-        }
-
-        h1 {
-            color: #4a6fa5;
-            text-align: center;
-            margin-bottom: 24px;
-            font-size: 1.5rem;
-        }
-
-        h2 {
-            color: #4a6fa5;
-            font-size: 1.25rem;
-            margin: 0;
-        }
-
-        h3 {
-            color: #4a6fa5;
-            margin-bottom: 16px;
-            font-size: 1.125rem;
-        }
-
-        .info-box {
-            background: #f3f4f6;
-            border-left: 4px solid #4a6fa5;
-            padding: 16px;
-            margin-bottom: 24px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .required {
-            color: #dc2626;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #4a6fa5;
-            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background: #166088;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #0d4d6d;
-        }
-
-        .btn-success {
-            background: #16a34a;
-            color: white;
-            width: 100%;
-            padding: 16px;
-        }
-
-        .btn-success:hover {
-            background: #15803d;
-        }
-
-        .btn-success:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background: #166088;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #0d4d6d;
-        }
-
-        .product-gallery {
-            margin-top: 32px;
-            margin-bottom: 24px;
-            overflow: hidden;
-        }
-
-        .product-gallery h2 {
-            margin-bottom: 16px;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-
-        .product-images {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-            width: 100%;
-        }
-
-        .product-image-card {
-            min-width: 100%;
-            width: 100%;
-            flex-shrink: 0;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.2s;
-            box-sizing: border-box;
-        }
-
-        .product-image-card:hover {
-            border-color: #4a6fa5;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .product-image-wrapper {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1;
-            background: #f3f4f6;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            overflow: hidden;
-        }
-
-        .product-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .product-image-placeholder {
-            font-size: 6rem;
-            color: #9ca3af;
-        }
-
-        .product-image-label {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 8px;
-            font-size: 1.25rem;
-        }
-
-        .product-image-price {
-            font-size: 1.125rem;
-            color: #166088;
-            font-weight: 500;
-        }
-
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .carousel-btn {
-            background: #166088;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .carousel-btn:hover {
-            background: #0d4d6d;
-        }
-
-        .carousel-btn:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #d1d5db;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: all 0.2s;
-        }
-
-        .carousel-dot.active {
-            background: #166088;
-            width: 24px;
-            border-radius: 5px;
-        }
-
-        .product-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 24px;
-            margin-bottom: 16px;
-        }
-
-        .product-card {
-            background: #f3f4f6;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .product-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .product-title {
-            color: #166088;
-            font-weight: 500;
-        }
-
-        .btn-remove {
-            background: #dc2626;
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .btn-remove:hover {
-            background: #b91c1c;
-        }
-
-        .grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .grid-2 {
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .grid-2 {
-                grid-template-columns: repeat(2, 1fr);
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#ffffff',
+                        foreground: '#0a0a0a',
+                        card: '#ffffff',
+                        'card-foreground': '#0a0a0a',
+                        primary: '#030213',
+                        'primary-foreground': '#ffffff',
+                        secondary: '#f1f5f9',
+                        'secondary-foreground': '#030213',
+                        muted: '#ececf0',
+                        'muted-foreground': '#717182',
+                        accent: '#e9ebef',
+                        'accent-foreground': '#030213',
+                        destructive: '#d4183d',
+                        'destructive-foreground': '#ffffff',
+                        border: 'rgba(0, 0, 0, 0.1)',
+                        input: '#f3f3f5',
+                        ring: '#a1a1aa'
+                    }
+                }
             }
         }
-
-        .color-buttons, .sleeve-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+    </script>
+    <style>
+        /* Custom styles for better form styling */
+        .form-input {
+            @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
         }
-
-        .color-btn, .sleeve-btn {
-            flex: 1;
-            min-width: 80px;
-            padding: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .form-select {
+            @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white;
         }
-
-        .color-btn.active, .sleeve-btn.active {
-            background: #4a6fa5;
-            color: white;
-            border-color: #4a6fa5;
+        .btn-primary {
+            @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors;
         }
-
-        .color-btn:hover:not(:disabled), .sleeve-btn:hover:not(:disabled) {
-            border-color: #4a6fa5;
-            background: #eff6ff;
+        .btn-secondary {
+            @apply px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors;
         }
-
-        .color-btn.active:hover, .sleeve-btn.active:hover {
-            background: #4a6fa5;
+        .btn-destructive {
+            @apply px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors;
         }
-
-        .color-btn:disabled, .sleeve-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #e5e7eb;
-        }
-
-        .color-emoji {
-            font-size: 1.25rem;
-            margin-bottom: 4px;
-        }
-
-        .summary {
-            border: 1px solid #4a6fa5;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 24px;
-            background: white;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #d1d5db;
-        }
-
-        .summary-product {
-            background: #f3f4f6;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 10px 0;
-        }
-
-        .summary-product-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .summary-product-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4px;
-            font-size: 0.9rem;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            padding: 16px;
-            margin-top: 10px;
-            background: #f3f4f6;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        .discount-text {
-            color: #16a34a;
-        }
-
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden;
         }
-
-        .modal.active {
-            display: flex;
+        .modal.show {
+            @apply block;
         }
-
-        .modal-content {
-            background: white;
-            border-radius: 8px;
-            padding: 24px;
-            max-width: 672px;
-            max-height: 90vh;
-            overflow-y: auto;
-            margin: 16px;
-            width: 100%;
+        .carousel-container {
+            @apply relative overflow-hidden rounded-lg bg-gray-100;
         }
-
-        .modal-header {
-            margin-bottom: 16px;
+        .carousel-track {
+            @apply flex transition-transform duration-300 ease-in-out;
         }
-
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+        .carousel-slide {
+            @apply w-full flex-shrink-0;
         }
-
-        .modal-description {
-            color: #6b7280;
+        .carousel-nav {
+            @apply absolute top-1/2 transform -translate-y-1/2 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .carousel-dots {
+            @apply flex justify-center space-x-2 mt-4;
         }
-
-        th, td {
-            border: 1px solid #d1d5db;
-            padding: 10px;
-            text-align: center;
+        .carousel-dot {
+            @apply w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all cursor-pointer;
         }
-
-        th {
-            background: #f3f4f6;
+        .carousel-dot.active {
+            @apply bg-blue-600 w-6;
         }
-
-        tbody tr:nth-child(even) {
-            background: #f9fafb;
-        }
-
-        .size-guide-notes {
-            margin-top: 20px;
-        }
-
-        .size-guide-notes p {
-            margin-bottom: 10px;
-        }
-
-        input[type="number"] {
-            max-width: 150px;
+        
+        /* Hide default select arrow */
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Form Pemesanan Kaos</h1>
-        
-        <div class="info-box">
-            <p>Silakan isi form berikut untuk memesan kaos. Pastikan semua informasi yang dimasukkan sudah benar.</p>
+<body class="min-h-screen bg-gray-50 py-4 px-4 sm:py-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="p-6 sm:p-8">
+            <h1 class="text-3xl font-medium text-center text-blue-600 mb-6">Form Pemesanan Kaos</h1>
+            
+            <div class="bg-gray-100 border-l-4 border-blue-600 p-4 rounded-r-lg mb-6">
+                <p class="text-sm">
+                    Silakan isi form berikut untuk memesan kaos. Pastikan semua informasi yang dimasukkan sudah benar.
+                </p>
+            </div>
+            
+            <form id="orderForm" class="space-y-6">
+                <!-- Customer Information -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label for="customerName" class="block text-sm font-medium text-gray-700">
+                            Nama Pemesan <span class="text-red-600">*</span>
+                        </label>
+                        <input
+                            id="customerName"
+                            type="text"
+                            placeholder="Masukkan nama lengkap"
+                            class="form-input"
+                            required
+                        />
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label for="phone" class="block text-sm font-medium text-gray-700">
+                            Nomor Telepon (WhatsApp) <span class="text-red-600">*</span>
+                        </label>
+                        <input
+                            id="phone"
+                            type="tel"
+                            placeholder="Contoh: 628123456789"
+                            class="form-input"
+                            required
+                        />
+                    </div>
+                </div>
+
+                <!-- Product Catalog -->
+                <div class="space-y-4">
+                    <h2 class="text-xl font-medium text-blue-600">Katalog Produk</h2>
+                    
+                    <div class="carousel-container">
+                        <div id="carousel-track" class="carousel-track">
+                            <div class="carousel-slide p-6 bg-white border-2 border-gray-200 hover:border-blue-600 transition-colors">
+                                <div class="text-center space-y-4">
+                                    <div class="w-full max-w-md mx-auto aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                                        <img
+                                            src="https://i.imgur.com/AD1MThF.jpg"
+                                            alt="Kode 01"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div class="space-y-2">
+                                        <h3 class="text-lg font-medium text-gray-800">Kode 01</h3>
+                                        <p class="text-lg font-medium text-blue-600">Rp 80.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-slide p-6 bg-white border-2 border-gray-200 hover:border-blue-600 transition-colors">
+                                <div class="text-center space-y-4">
+                                    <div class="w-full max-w-md mx-auto aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                                        <img
+                                            src="https://i.imgur.com/iUc5vqG.jpg"
+                                            alt="Kode 02"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div class="space-y-2">
+                                        <h3 class="text-lg font-medium text-gray-800">Kode 02</h3>
+                                        <p class="text-lg font-medium text-blue-600">Rp 80.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-slide p-6 bg-white border-2 border-gray-200 hover:border-blue-600 transition-colors">
+                                <div class="text-center space-y-4">
+                                    <div class="w-full max-w-md mx-auto aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                                        <img
+                                            src="https://i.imgur.com/NjOk1Zt.jpg"
+                                            alt="Kode 03"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div class="space-y-2">
+                                        <h3 class="text-lg font-medium text-gray-800">Kode 03</h3>
+                                        <p class="text-lg font-medium text-blue-600">Rp 80.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-slide p-6 bg-white border-2 border-gray-200 hover:border-blue-600 transition-colors">
+                                <div class="text-center space-y-4">
+                                    <div class="w-full max-w-md mx-auto aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                                        <img
+                                            src="https://i.imgur.com/eFe0yis.jpg"
+                                            alt="Kode 04"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div class="space-y-2">
+                                        <h3 class="text-lg font-medium text-gray-800">Kode 04</h3>
+                                        <p class="text-lg font-medium text-blue-600">Rp 70.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation buttons -->
+                        <button type="button" id="prevBtn" class="carousel-nav left-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <button type="button" id="nextBtn" class="carousel-nav right-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Dots indicator -->
+                    <div id="carousel-dots" class="carousel-dots"></div>
+                </div>
+                
+                <!-- Product List -->
+                <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <h2 class="text-xl font-medium text-blue-600">Daftar Produk</h2>
+                        <button type="button" id="addProductBtn" class="btn-primary">
+                            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Tambah Produk
+                        </button>
+                    </div>
+                    
+                    <div id="productList" class="space-y-4">
+                        <!-- Products will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <!-- Notes -->
+                <div class="space-y-2">
+                    <label for="notes" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
+                    <textarea
+                        id="notes"
+                        placeholder="Tambahkan catatan jika ada..."
+                        class="form-input min-h-[100px] resize-y"
+                    ></textarea>
+                </div>
+                
+                <!-- Order Summary -->
+                <div id="orderSummary" class="hidden bg-white border border-blue-600 rounded-lg p-6 space-y-4">
+                    <!-- Summary will be dynamically generated -->
+                </div>
+                
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    id="submitBtn"
+                    disabled
+                    class="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-4 px-6 rounded-lg font-medium transition-colors"
+                >
+                    Kirim Pesanan via WhatsApp
+                </button>
+            </form>
         </div>
-        
-        <form id="orderForm">
-            <div class="form-group">
-                <label for="customerName">Nama Pemesan <span class="required">*</span></label>
-                <input type="text" id="customerName" required placeholder="Masukkan nama lengkap">
+    </div>
+    
+    <!-- Size Guide Modal -->
+    <div id="sizeModal" class="modal">
+        <div class="bg-white rounded-lg p-6 max-w-4xl max-h-[90vh] overflow-y-auto mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-medium text-gray-900">Panduan Ukuran Kaos</h3>
+                <button type="button" id="closeSizeModal" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
+            <p class="text-gray-600 mb-6">Panduan ukuran lengkap untuk membantu Anda memilih ukuran yang tepat</p>
             
-            <div class="form-group">
-                <label for="phone">Nomor Telepon (WhatsApp) <span class="required">*</span></label>
-                <input type="tel" id="phone" required placeholder="Contoh: 628123456789">
-            </div>
-            
-            <div class="product-gallery">
-                <h2>Katalog Produk</h2>
-                <div class="carousel-container">
-                    <div class="product-images" id="productCarousel">
-                        <div class="product-image-card">
-                            <div class="product-image-wrapper">
-                                <img src="https://i.imgur.com/AD1MThF.jpg" alt="Kode 01">
-                            </div>
-                            <div class="product-image-label">Kode 01</div>
-                            <div class="product-image-price">Rp 80.000</div>
-                        </div>
-                        <div class="product-image-card">
-                            <div class="product-image-wrapper">
-                                <img src="https://i.imgur.com/iUc5vqG.jpg" alt="Kode 02">
-                            </div>
-                            <div class="product-image-label">Kode 02</div>
-                            <div class="product-image-price">Rp 80.000</div>
-                        </div>
-                        <div class="product-image-card">
-                            <div class="product-image-wrapper">
-                                <img src="https://i.imgur.com/NjOk1Zt.jpg" alt="Kode 03">
-                            </div>
-                            <div class="product-image-label">Kode 03</div>
-                            <div class="product-image-price">Rp 80.000</div>
-                        </div>
-                        <div class="product-image-card">
-                            <div class="product-image-wrapper">
-                                <img src="https://i.imgur.com/eFe0yis.jpg" alt="Kode 04">
-                            </div>
-                            <div class="product-image-label">Kode 04</div>
-                            <div class="product-image-price">Rp 70.000</div>
+            <div class="space-y-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full border border-gray-200 rounded-lg">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-2 text-center border-b border-gray-200">Ukuran</th>
+                                <th class="px-4 py-2 text-center border-b border-gray-200">Lebar Dada (cm)</th>
+                                <th class="px-4 py-2 text-center border-b border-gray-200">Panjang Badan (cm)</th>
+                                <th class="px-4 py-2 text-center border-b border-gray-200">Panjang Lengan (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">S</td><td class="px-4 py-2 text-center border-b border-gray-200">49</td><td class="px-4 py-2 text-center border-b border-gray-200">69</td><td class="px-4 py-2 text-center border-b border-gray-200">19</td></tr>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">M</td><td class="px-4 py-2 text-center border-b border-gray-200">51</td><td class="px-4 py-2 text-center border-b border-gray-200">71</td><td class="px-4 py-2 text-center border-b border-gray-200">20</td></tr>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">L</td><td class="px-4 py-2 text-center border-b border-gray-200">53</td><td class="px-4 py-2 text-center border-b border-gray-200">73</td><td class="px-4 py-2 text-center border-b border-gray-200">21</td></tr>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">XL</td><td class="px-4 py-2 text-center border-b border-gray-200">55</td><td class="px-4 py-2 text-center border-b border-gray-200">75</td><td class="px-4 py-2 text-center border-b border-gray-200">22</td></tr>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">XXL</td><td class="px-4 py-2 text-center border-b border-gray-200">57</td><td class="px-4 py-2 text-center border-b border-gray-200">77</td><td class="px-4 py-2 text-center border-b border-gray-200">23</td></tr>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">3XL</td><td class="px-4 py-2 text-center border-b border-gray-200">59</td><td class="px-4 py-2 text-center border-b border-gray-200">79</td><td class="px-4 py-2 text-center border-b border-gray-200">24</td></tr>
+                            <tr><td class="px-4 py-2 text-center border-b border-gray-200">4XL</td><td class="px-4 py-2 text-center border-b border-gray-200">61</td><td class="px-4 py-2 text-center border-b border-gray-200">81</td><td class="px-4 py-2 text-center border-b border-gray-200">25</td></tr>
+                            <tr><td class="px-4 py-2 text-center">5XL</td><td class="px-4 py-2 text-center">63</td><td class="px-4 py-2 text-center">83</td><td class="px-4 py-2 text-center">26</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="space-y-4 text-sm">
+                    <div>
+                        <h4 class="font-medium mb-2">Cara Mengukur:</h4>
+                        <div class="space-y-2">
+                            <p><strong>Lebar Dada:</strong> Ukur dari ketiak kiri ke ketiak kanan (sekeliling dada).</p>
+                            <p><strong>Panjang Badan:</strong> Ukur dari bahu tertinggi hingga ujung bawah kaos.</p>
+                            <p><strong>Panjang Lengan:</strong> Ukur dari ujung bahu hingga ujung lengan.</p>
+                            <p class="text-gray-500 italic">Catatan: Ukuran dapat bervariasi 1-2 cm karena proses produksi.</p>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-nav">
-                    <button type="button" class="carousel-btn" id="prevBtn" onclick="prevSlide()">‹</button>
-                    <button type="button" class="carousel-btn" id="nextBtn" onclick="nextSlide()">›</button>
+                
+                <div class="flex justify-end">
+                    <button type="button" id="closeSizeModalBtn" class="btn-primary">Tutup</button>
                 </div>
-                <div class="carousel-dots" id="carouselDots"></div>
             </div>
-            
-            <div class="product-header">
-                <h2>Daftar Produk</h2>
-                <button type="button" class="btn btn-primary" onclick="addProduct()">+ Tambah Produk</button>
-            </div>
-            
-            <div id="productList"></div>
-            
-            <div class="form-group">
-                <label for="notes">Catatan (Opsional)</label>
-                <textarea id="notes" placeholder="Tambahkan catatan jika ada..."></textarea>
-            </div>
-            
-            <div id="summary"></div>
-            
-            <button type="submit" class="btn btn-success" id="submitBtn" disabled>
-                Kirim Pesanan via WhatsApp
-            </button>
-        </form>
-    </div>
-
-    <div id="sizeModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Panduan Ukuran Kaos</div>
-                <div class="modal-description">Panduan ukuran lengkap untuk membantu Anda memilih ukuran yang tepat</div>
-            </div>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ukuran</th>
-                        <th>Lebar Dada (cm)</th>
-                        <th>Panjang Badan (cm)</th>
-                        <th>Panjang Lengan (cm)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>S</td><td>49</td><td>69</td><td>19</td></tr>
-                    <tr><td>M</td><td>51</td><td>71</td><td>20</td></tr>
-                    <tr><td>L</td><td>53</td><td>73</td><td>21</td></tr>
-                    <tr><td>XL</td><td>55</td><td>75</td><td>22</td></tr>
-                    <tr><td>XXL</td><td>57</td><td>77</td><td>23</td></tr>
-                    <tr><td>3XL</td><td>59</td><td>79</td><td>24</td></tr>
-                    <tr><td>4XL</td><td>61</td><td>81</td><td>25</td></tr>
-                    <tr><td>5XL</td><td>63</td><td>83</td><td>26</td></tr>
-                </tbody>
-            </table>
-            
-            <div class="size-guide-notes">
-                <p><strong>Cara Mengukur:</strong></p>
-                <p><strong>Lebar Dada:</strong> Ukur dari ketiak kiri ke ketiak kanan (sekeliling dada).</p>
-                <p><strong>Panjang Badan:</strong> Ukur dari bahu tertinggi hingga ujung bawah kaos.</p>
-                <p><strong>Panjang Lengan:</strong> Ukur dari ujung bahu hingga ujung lengan.</p>
-                <p><em>Catatan: Ukuran dapat bervariasi 1-2 cm karena proses produksi.</em></p>
-            </div>
-            
-            <button type="button" class="btn btn-primary" onclick="closeSizeModal()" style="margin-top: 16px;">Tutup</button>
         </div>
     </div>
 
     <script>
-        const PRODUCT_PRICES = {
-            '01': { base: 80000, category: 'regular' },
-            '02': { base: 80000, category: 'regular' },
-            '03': { base: 80000, category: 'regular' },
-            '04': { base: 70000, category: 'regular' }
-        };
-
-        const PRICING_RULES = {
-            longSleeveExtra: 8000,
-            oversizeExtra: 5000,
-            bulkDiscountThreshold: 12,
-            bulkDiscountAmount: 10000
-        };
-
+        // Global variables
         let products = [{
             id: Date.now(),
             code: '',
@@ -639,90 +328,260 @@
             size: '',
             quantity: 1
         }];
-
+        
         let currentSlide = 0;
         const totalSlides = 4;
+        
+        const PRODUCT_PRICES = {
+            '01': { base: 80000, category: 'regular' },
+            '02': { base: 80000, category: 'regular' },
+            '03': { base: 80000, category: 'regular' },
+            '04': { base: 70000, category: 'regular' }
+        };
+        
+        const PRICING_RULES = {
+            longSleeveExtra: 8000,
+            oversizeExtra: 5000,
+            bulkDiscountThreshold: 12,
+            bulkDiscountAmount: 10000
+        };
 
-        function initCarousel() {
-            const dotsContainer = document.getElementById('carouselDots');
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            setupCarousel();
+            renderProducts();
+            setupEventListeners();
+            updateFormValidation();
+        });
+
+        // Carousel functionality
+        function setupCarousel() {
+            const track = document.getElementById('carousel-track');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('carousel-dots');
+            
+            // Create dots
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide(i);
+                dot.type = 'button';
+                dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(i));
                 dotsContainer.appendChild(dot);
             }
+            
+            // Navigation buttons
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Auto-advance (optional)
+            setInterval(nextSlide, 5000);
+            
             updateCarousel();
         }
-
-        function updateCarousel() {
-            const carousel = document.getElementById('productCarousel');
-            const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-            carousel.style.transform = `translateX(-${currentSlide * containerWidth}px)`;
-            
-            const dots = document.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-            
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
-        }
-
+        
         function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateCarousel();
-            }
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
         }
-
+        
         function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-            }
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
         }
-
+        
         function goToSlide(index) {
             currentSlide = index;
             updateCarousel();
         }
-
-        // Swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        const carouselElement = document.getElementById('productCarousel');
         
-        carouselElement.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        carouselElement.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) nextSlide();
-            if (touchEndX > touchStartX + 50) prevSlide();
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
         }
 
-        // Update carousel on window resize
-        window.addEventListener('resize', updateCarousel);
-
-        function generateId() {
-            return Date.now() + Math.random();
+        // Product management
+        function renderProducts() {
+            const container = document.getElementById('productList');
+            container.innerHTML = '';
+            
+            products.forEach((product, index) => {
+                const productHtml = createProductForm(product, index);
+                container.appendChild(productHtml);
+            });
+        }
+        
+        function createProductForm(product, index) {
+            const div = document.createElement('div');
+            div.className = 'bg-gray-100 rounded-lg p-6 shadow-sm';
+            div.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-blue-600">Produk ${index + 1}</h3>
+                    ${products.length > 1 ? `
+                        <button type="button" class="btn-destructive remove-product-btn" data-id="${product.id}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    ` : ''}
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Kode Kaos <span class="text-red-600">*</span>
+                        </label>
+                        <select class="form-select product-code" data-id="${product.id}">
+                            <option value="">-- Pilih Kode Kaos --</option>
+                            <option value="01" ${product.code === '01' ? 'selected' : ''}>Kode 01</option>
+                            <option value="02" ${product.code === '02' ? 'selected' : ''}>Kode 02</option>
+                            <option value="03" ${product.code === '03' ? 'selected' : ''}>Kode 03</option>
+                            <option value="04" ${product.code === '04' ? 'selected' : ''}>Kode 04</option>
+                        </select>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Ukuran <span class="text-red-600">*</span>
+                        </label>
+                        <select class="form-select product-size" data-id="${product.id}">
+                            <option value="">-- Pilih Ukuran --</option>
+                            ${['S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL', '5XL'].map(size => 
+                                `<option value="${size}" ${product.size === size ? 'selected' : ''}>${size}</option>`
+                            ).join('')}
+                        </select>
+                        <button type="button" class="btn-secondary w-full mt-2 show-size-guide-btn">
+                            Lihat Panduan Ukuran
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Warna Kaos <span class="text-red-600">*</span>
+                        </label>
+                        <div class="flex gap-2">
+                            <button type="button" class="flex-1 min-w-20 p-3 border rounded-lg transition-all color-btn ${product.color === 'hitam' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white hover:bg-gray-50 border-gray-300 hover:border-blue-600'}" 
+                                    data-id="${product.id}" data-color="hitam" ${!product.code ? 'disabled' : ''}>
+                                <div class="flex flex-col items-center space-y-1">
+                                    <span class="text-lg">⚫</span>
+                                    <span class="text-sm">Hitam</span>
+                                </div>
+                            </button>
+                            <button type="button" class="flex-1 min-w-20 p-3 border rounded-lg transition-all color-btn ${product.color === 'putih' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white hover:bg-gray-50 border-gray-300 hover:border-blue-600'}" 
+                                    data-id="${product.id}" data-color="putih" ${!product.code ? 'disabled' : ''}>
+                                <div class="flex flex-col items-center space-y-1">
+                                    <span class="text-lg">⚪</span>
+                                    <span class="text-sm">Putih</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Jenis Lengan <span class="text-red-600">*</span>
+                        </label>
+                        <div class="flex gap-2">
+                            <button type="button" class="flex-1 p-3 border rounded-lg transition-all sleeve-btn ${product.sleeve === 'pendek' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white hover:bg-gray-50 border-gray-300 hover:border-blue-600'}" 
+                                    data-id="${product.id}" data-sleeve="pendek" ${!product.code ? 'disabled' : ''}>
+                                Pendek
+                            </button>
+                            <button type="button" class="flex-1 p-3 border rounded-lg transition-all sleeve-btn ${product.sleeve === 'panjang' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white hover:bg-gray-50 border-gray-300 hover:border-blue-600'}" 
+                                    data-id="${product.id}" data-sleeve="panjang" ${!product.code ? 'disabled' : ''}>
+                                Panjang
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2 md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Jumlah <span class="text-red-600">*</span>
+                        </label>
+                        <input type="number" min="1" value="${product.quantity}" class="form-input max-w-40 product-quantity" data-id="${product.id}">
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners
+            const removeBtn = div.querySelector('.remove-product-btn');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', () => removeProduct(product.id));
+            }
+            
+            div.querySelector('.product-code').addEventListener('change', (e) => {
+                updateProduct(product.id, 'code', e.target.value);
+            });
+            
+            div.querySelector('.product-size').addEventListener('change', (e) => {
+                updateProduct(product.id, 'size', e.target.value);
+            });
+            
+            div.querySelector('.product-quantity').addEventListener('input', (e) => {
+                updateProduct(product.id, 'quantity', parseInt(e.target.value) || 1);
+            });
+            
+            div.querySelectorAll('.color-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    updateProduct(product.id, 'color', btn.dataset.color);
+                });
+            });
+            
+            div.querySelectorAll('.sleeve-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    updateProduct(product.id, 'sleeve', btn.dataset.sleeve);
+                });
+            });
+            
+            div.querySelector('.show-size-guide-btn').addEventListener('click', showSizeModal);
+            
+            return div;
+        }
+        
+        function addProduct() {
+            const newProduct = {
+                id: Date.now() + Math.random(),
+                code: '',
+                color: '',
+                sleeve: '',
+                size: '',
+                quantity: 1
+            };
+            products.push(newProduct);
+            renderProducts();
+            updateFormValidation();
+            updateOrderSummary();
+        }
+        
+        function removeProduct(id) {
+            if (products.length > 1) {
+                products = products.filter(p => p.id !== id);
+                renderProducts();
+                updateFormValidation();
+                updateOrderSummary();
+            }
+        }
+        
+        function updateProduct(id, field, value) {
+            products = products.map(p => 
+                p.id === id ? { ...p, [field]: value } : p
+            );
+            renderProducts();
+            updateFormValidation();
+            updateOrderSummary();
         }
 
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('id-ID', {
-                style: 'currency',
-                currency: 'IDR',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            }).format(amount);
-        }
-
+        // Phone number formatting
         function formatPhoneNumber(value) {
             let cleanValue = value.replace(/\D/g, '');
             if (cleanValue.startsWith('0')) {
@@ -733,6 +592,7 @@
             return cleanValue;
         }
 
+        // Price calculation
         function calculatePrice(code, sleeve, size, quantity) {
             if (!PRODUCT_PRICES[code]) return 0;
             
@@ -755,166 +615,48 @@
             return unitPrice * quantity;
         }
 
-        function getAvailableSleeves(code) {
-            return ['pendek', 'panjang'];
-        }
-
-        function addProduct() {
-            products.push({
-                id: generateId(),
-                code: '',
-                color: '',
-                sleeve: '',
-                size: '',
-                quantity: 1
-            });
-            renderProducts();
-            updateValidation();
-        }
-
-        function removeProduct(id) {
-            if (products.length > 1) {
-                products = products.filter(p => p.id !== id);
-                renderProducts();
-                updateValidation();
-            }
-        }
-
-        function updateProduct(id, field, value) {
-            products = products.map(p => {
-                if (p.id === id) {
-                    const updated = { ...p, [field]: value };
-                    
-                    if (field === 'code') {
-                        const availableSleeves = getAvailableSleeves(value);
-                        if (!availableSleeves.includes(updated.sleeve)) {
-                            updated.sleeve = availableSleeves.length === 1 ? availableSleeves[0] : '';
-                        }
-                    }
-                    
-                    return updated;
-                }
-                return p;
-            });
-            renderProducts();
-            updateValidation();
-        }
-
-        function renderProducts() {
-            const productList = document.getElementById('productList');
-            productList.innerHTML = products.map((product, index) => `
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <div class="product-title">Produk ${index + 1}</div>
-                        ${products.length > 1 ? `
-                            <button type="button" class="btn btn-remove" onclick="removeProduct(${product.id})">
-                                ✕
-                            </button>
-                        ` : ''}
-                    </div>
-                    
-                    <div class="grid grid-2">
-                        <div class="form-group">
-                            <label>Kode Kaos <span class="required">*</span></label>
-                            <select onchange="updateProduct(${product.id}, 'code', this.value)" required>
-                                <option value="">-- Pilih Kode Kaos --</option>
-                                ${['01', '02', '03', '04'].map(code => 
-                                    `<option value="${code}" ${product.code === code ? 'selected' : ''}>Kode ${code}</option>`
-                                ).join('')}
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Ukuran <span class="required">*</span></label>
-                            <select onchange="updateProduct(${product.id}, 'size', this.value)" required>
-                                <option value="">-- Pilih Ukuran --</option>
-                                ${['S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL', '5XL'].map(size => 
-                                    `<option value="${size}" ${product.size === size ? 'selected' : ''}>${size}</option>`
-                                ).join('')}
-                            </select>
-                            <button type="button" class="btn btn-secondary" onclick="openSizeModal()" style="margin-top: 8px;">
-                                Lihat Panduan Ukuran
-                            </button>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Warna Kaos <span class="required">*</span></label>
-                            <div class="color-buttons">
-                                ${[
-                                    { value: 'hitam', label: 'Hitam', emoji: '⚫' },
-                                    { value: 'putih', label: 'Putih', emoji: '⚪' }
-                                ].map(color => `
-                                    <button type="button" class="color-btn ${product.color === color.value ? 'active' : ''}" 
-                                            onclick="updateProduct(${product.id}, 'color', '${color.value}')"
-                                            ${!product.code ? 'disabled' : ''}>
-                                        <span class="color-emoji">${color.emoji}</span>
-                                        <span>${color.label}</span>
-                                    </button>
-                                `).join('')}
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Jenis Lengan <span class="required">*</span></label>
-                            <div class="sleeve-buttons">
-                                ${[
-                                    { value: 'pendek', label: 'Pendek' },
-                                    { value: 'panjang', label: 'Panjang' }
-                                ].map(sleeve => {
-                                    const availableSleeves = getAvailableSleeves(product.code);
-                                    const isAvailable = product.code && availableSleeves.includes(sleeve.value);
-                                    return `
-                                        <button type="button" class="sleeve-btn ${product.sleeve === sleeve.value ? 'active' : ''}" 
-                                                onclick="updateProduct(${product.id}, 'sleeve', '${sleeve.value}')"
-                                                ${!isAvailable ? 'disabled' : ''}>
-                                            ${sleeve.label}
-                                        </button>
-                                    `;
-                                }).join('')}
-                            </div>
-                        </div>
-                        
-                        <div class="form-group" style="grid-column: 1 / -1;">
-                            <label>Jumlah <span class="required">*</span></label>
-                            <input type="number" min="1" value="${product.quantity}" 
-                                   onchange="updateProduct(${product.id}, 'quantity', parseInt(this.value) || 1)">
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function updateValidation() {
+        // Form validation
+        function validateForm() {
             const customerName = document.getElementById('customerName').value;
             const phone = document.getElementById('phone').value;
             const validProducts = products.filter(p => 
                 p.code && p.color && p.sleeve && p.size && p.quantity > 0
             );
-            
-            const isValid = customerName && phone && validProducts.length > 0;
-            document.getElementById('submitBtn').disabled = !isValid;
-            
-            renderSummary(customerName, phone, validProducts);
+            return customerName && phone && validProducts.length > 0;
+        }
+        
+        function updateFormValidation() {
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = !validateForm();
         }
 
-        function renderSummary(customerName, phone, validProducts) {
+        // Order summary
+        function updateOrderSummary() {
+            const customerName = document.getElementById('customerName').value;
+            const phone = document.getElementById('phone').value;
+            const notes = document.getElementById('notes').value;
+            const summaryContainer = document.getElementById('orderSummary');
+            
+            const validProducts = products.filter(p => 
+                p.code && p.color && p.sleeve && p.size && p.quantity > 0
+            );
+
             if (!customerName || !phone || validProducts.length === 0) {
-                document.getElementById('summary').innerHTML = '';
+                summaryContainer.classList.add('hidden');
                 return;
             }
 
             let totalQuantity = 0;
             let subtotal = 0;
             
-            const summaryProducts = validProducts.map(product => {
+            const summaryProducts = validProducts.map((product, index) => {
                 const price = calculatePrice(product.code, product.sleeve, product.size, product.quantity);
                 totalQuantity += product.quantity;
                 subtotal += price;
-                const index = products.findIndex(p => p.id === product.id) + 1;
                 
                 return {
                     ...product,
-                    index,
+                    index: index + 1,
                     price,
                     unitPrice: price / product.quantity
                 };
@@ -926,77 +668,129 @@
             }
             
             const total = subtotal - discount;
-            const notes = document.getElementById('notes').value;
 
-            document.getElementById('summary').innerHTML = `
-                <div class="summary">
-                    <h3>Ringkasan Pesanan</h3>
-                    
-                    <div class="summary-row">
+            const formatCurrency = (amount) => {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(amount);
+            };
+
+            summaryContainer.innerHTML = `
+                <h3 class="text-xl font-medium text-blue-600">Ringkasan Pesanan</h3>
+                
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-200">
                         <span>Nama Pemesan:</span>
-                        <span>${customerName}</span>
+                        <span class="font-medium">${customerName}</span>
                     </div>
-                    <div class="summary-row">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-200">
                         <span>Telepon:</span>
-                        <span>${phone}</span>
+                        <span class="font-medium">${phone}</span>
                     </div>
-                    
+                </div>
+                
+                <div class="space-y-3">
                     ${summaryProducts.map(product => `
-                        <div class="summary-product">
-                            <div class="summary-product-header">
-                                <span>Produk ${product.index}</span>
-                                <span>${product.quantity} pcs - ${formatCurrency(product.price)}</span>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="font-medium">Produk ${product.index}</span>
+                                <span class="font-medium">
+                                    ${product.quantity} pcs - ${formatCurrency(product.price)}
+                                </span>
                             </div>
-                            <div class="summary-product-details">
+                            <div class="grid grid-cols-2 gap-2 text-sm text-gray-600">
                                 <span>Kode: ${product.code}</span>
                                 <span>Ukuran: ${product.size}</span>
                                 <span>Warna: ${product.color}</span>
                                 <span>Lengan: ${product.sleeve}</span>
-                                <span style="grid-column: 1 / -1;">Harga satuan: ${formatCurrency(product.unitPrice)}</span>
+                                <span class="col-span-2">
+                                    Harga satuan: ${formatCurrency(product.unitPrice)}
+                                </span>
                             </div>
                         </div>
                     `).join('')}
-                    
-                    ${notes ? `
-                        <div class="summary-row">
-                            <span>Catatan:</span>
-                            <span>${notes}</span>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="summary-row">
-                        <span>Total Pesanan:</span>
-                        <span>${totalQuantity} pcs</span>
+                </div>
+                
+                ${notes ? `
+                    <div class="flex justify-between items-start py-2 border-b border-gray-200">
+                        <span>Catatan:</span>
+                        <span class="font-medium text-right max-w-xs">${notes}</span>
                     </div>
-                    <div class="summary-row">
+                ` : ''}
+                
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                        <span>Total Pesanan:</span>
+                        <span class="font-medium">${totalQuantity} pcs</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-200">
                         <span>Subtotal:</span>
-                        <span>${formatCurrency(subtotal)}</span>
+                        <span class="font-medium">${formatCurrency(subtotal)}</span>
                     </div>
                     
                     ${discount > 0 ? `
-                        <div class="summary-row discount-text">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-200 text-green-600">
                             <span>Diskon Grosir (${totalQuantity} pcs):</span>
-                            <span>-${formatCurrency(discount)}</span>
+                            <span class="font-medium">-${formatCurrency(discount)}</span>
                         </div>
                     ` : ''}
                     
-                    <div class="summary-total">
-                        <span>Total Bayar:</span>
-                        <span>${formatCurrency(total)}</span>
+                    <div class="flex justify-between items-center py-4 bg-gray-100 rounded-lg px-4">
+                        <span class="font-medium">Total Bayar:</span>
+                        <span class="font-bold text-lg">${formatCurrency(total)}</span>
                     </div>
                 </div>
             `;
+            
+            summaryContainer.classList.remove('hidden');
         }
 
-        function openSizeModal() {
-            document.getElementById('sizeModal').classList.add('active');
+        // Modal functions
+        function showSizeModal() {
+            document.getElementById('sizeModal').classList.add('show');
+        }
+        
+        function hideSizeModal() {
+            document.getElementById('sizeModal').classList.remove('show');
         }
 
-        function closeSizeModal() {
-            document.getElementById('sizeModal').classList.remove('active');
+        // Event listeners setup
+        function setupEventListeners() {
+            // Add product button
+            document.getElementById('addProductBtn').addEventListener('click', addProduct);
+            
+            // Form inputs
+            document.getElementById('customerName').addEventListener('input', () => {
+                updateFormValidation();
+                updateOrderSummary();
+            });
+            
+            document.getElementById('phone').addEventListener('input', (e) => {
+                e.target.value = formatPhoneNumber(e.target.value);
+                updateFormValidation();
+                updateOrderSummary();
+            });
+            
+            document.getElementById('notes').addEventListener('input', updateOrderSummary);
+            
+            // Modal events
+            document.getElementById('closeSizeModal').addEventListener('click', hideSizeModal);
+            document.getElementById('closeSizeModalBtn').addEventListener('click', hideSizeModal);
+            document.getElementById('sizeModal').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    hideSizeModal();
+                }
+            });
+            
+            // Form submit
+            document.getElementById('orderForm').addEventListener('submit', handleSubmit);
         }
 
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
+        // Form submission
+        function handleSubmit(e) {
             e.preventDefault();
             
             const customerName = document.getElementById('customerName').value;
@@ -1034,6 +828,15 @@
             }
             
             const total = subtotal - discount;
+            
+            const formatCurrency = (amount) => {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(amount);
+            };
             
             let message = "PESANAN BARU KAOS\n\n";
             message += `Nama: ${customerName}\n`;
@@ -1075,26 +878,7 @@
             setTimeout(() => {
                 alert('Form berhasil dikirim! WhatsApp akan terbuka dalam tab baru.\n\nJika WhatsApp tidak terbuka otomatis, silakan copy pesan dan kirim manual.');
             }, 500);
-        });
-
-        document.getElementById('customerName').addEventListener('input', updateValidation);
-        document.getElementById('phone').addEventListener('input', function(e) {
-            e.target.value = formatPhoneNumber(e.target.value);
-            updateValidation();
-        });
-        document.getElementById('notes').addEventListener('input', updateValidation);
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('sizeModal');
-            if (event.target === modal) {
-                closeSizeModal();
-            }
-        };
-
-        // Initialize
-        initCarousel();
-        renderProducts();
-        updateValidation();
+        }
     </script>
 </body>
 </html>
